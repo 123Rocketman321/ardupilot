@@ -119,6 +119,7 @@ void OpticalFlow::init(uint32_t log_bit)
     case OpticalFlowType::PIXART:
         backend = AP_OpticalFlow_Pixart::detect("pixartflow", *this);
         if (backend == nullptr) {
+            backend = AP_OpticalFlow_PX4Flow::detect(*this)
             backend = AP_OpticalFlow_Pixart::detect("pixartPC15", *this);
         }
         break;
